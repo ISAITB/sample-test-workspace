@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<scriptlet id="createOrderDate" xmlns="http://www.gitb.com/tdl/v1/">
+    <steps>
+        <process output="orderDate" handler="TokenGenerator" operation="timestamp">
+            <input name="format">"yyyy-MM-dd"</input>
+        </process>
+    </steps>
+    <output name="orderDate"/>
+</scriptlet>

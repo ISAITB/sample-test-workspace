@@ -1,0 +1,4 @@
+<?xml version="1.0"?>
+<purchaseOrder xmlns="http://itb.ec.europa.eu/sample/po.xsd" orderDate="2022-10-24">
+    <invalidElement>An unexpected element</invalidElement>
+</purchaseOrder>

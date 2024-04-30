@@ -1,0 +1,21 @@
+<table style="border-collapse: collapse; width: 100%; height: 73px;"><colgroup><col style="width: 13.8003%;"><col style="width: 86.1997%;"></colgroup>
+    <tbody>
+    <tr style="height: 36px;">
+    <td style="background-color: rgb( 35 , 111 , 161 ); height: 36px; border: 1px solid rgb( 52 , 73 , 94 );"><strong><span style="color: rgb( 255 , 255 , 255 );">&nbsp;Title</span></strong></td>
+    <td style="height: 36px; border: 1px solid rgb( 52 , 73 , 94 );">&nbsp;[TC2] Receive a valid purchase order</td>
+    </tr>
+    <tr style="height: 37px;">
+    <td style="background-color: rgb( 35 , 111 , 161 ); height: 37px; border: 1px solid rgb( 52 , 73 , 94 );"><strong><span style="color: rgb( 255 , 255 , 255 );">&nbsp;Description</span></strong></td>
+    <td style="height: 37px; border: 1px solid rgb( 52 , 73 , 94 );">&nbsp;Test case that sends a valid purchase order to the SUT and expects a correct response.</td>
+    </tr>
+    </tbody>
+    </table>
+    <p>&nbsp;</p>
+    <p><img style="display: block; margin-left: auto; margin-right: auto;" src="resources/tc2_diagram.png" alt="" width="586" height="406"></p>
+    <p><strong>Test step notes</strong></p>
+    <ul>
+    <li>You will receive a purchase order at your API endpoint (defined as part of your system's configuration).</li>
+    <li>You need to respond with a <strong>200</strong> (OK) response and a <strong>text/plain</strong> body.</li>
+    <li>The content of the body must be a reference code starting with "REF-" and followed by one or mode digits.</li>
+    </ul>
+    <p>The project also provides an <a href="https://www.itb.ec.europa.eu/order/upload" target="_blank" rel="noopener noreferrer nofollow">online validator</a> as a complementary service.</p>

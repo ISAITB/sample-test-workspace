@@ -1,0 +1,58 @@
+version: '2.1'
+
+volumes:
+  gitb-repo:
+  gitb-dbdata:
+
+services:
+  gitb-redis:
+    image: redis:7.0.15
+    restart: unless-stopped
+  gitb-mysql:
+    image: isaitb/gitb-mysql
+    restart: unless-stopped
+    volumes:
+      - gitb-dbdata:/var/lib/mysql
+    healthcheck:
+      test: "/usr/bin/mysql --user=root --password=$$MYSQL_ROOT_PASSWORD --execute \"SHOW DATABASES;\""
+      interval: 3s
+      retries: 20
+  gitb-srv:
+    image: isaitb/gitb-srv
+    restart: unless-stopped
+    environment:
+      - gitb.messaging.callbackURL=http://gitb-srv:8080/itbsrv/MessagingClient
+  gitb-ui:
+    image: isaitb/gitb-ui
+    restart: unless-stopped
+    ports:
+      - "9000:9000"
+    environment:
+      - DATA_ARCHIVE_KEY=sandbox
+      - AUTOMATION_API_ENABLED=true
+      - THEME=ec
+    volumes:
+      - gitb-repo:/gitb-repository
+      - ./data/:/gitb-repository/data/in/:rw      
+    depends_on:
+      gitb-redis:
+        condition: service_started
+      gitb-mysql:
+        condition: service_healthy
+      gitb-srv:
+        condition: service_started
+  po-test-services:
+    build:
+      context: ./po-test-services
+    restart: unless-stopped
+    ports:
+      - "7000:7000"
+  po-mock-server:
+    image: mockserver/mockserver:5.15.0
+    restart: unless-stopped
+    volumes:
+      - ./sut-mock/config:/config
+    ports:
+      - "1080:1080"
+    environment:
+      - ENV MOCKSERVER_PROPERTY_FILE=/config/mockserver.properties      

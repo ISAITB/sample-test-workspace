@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<scriptlet id="sendPurchaseOrder" xmlns="http://www.gitb.com/tdl/v1/">
+    <params>
+        <var name="description" type="string"><value>Receive purchase order</value></var>
+        <var name="purchaseOrder" type="binary"/>
+    </params>
+    <steps>
+        <!-- Send the purchase order to the SUT. -->
+        <send id="sendData" desc="$description" from="TestBed" to="Retailer" handler="$DOMAIN{messagingServiceAddress}">
+            <input name="purchaseOrder">$purchaseOrder</input>
+            <input name="endpoint">$SYSTEM{endpointAddress}</input>
+        </send>
+    </steps>
+    <output name="sendData"/>
+</scriptlet>

@@ -1,0 +1,13 @@
+[
+	{
+		"id": "Receive valid purchase order",
+		"httpRequest": {
+			"method": "POST",
+			"path": "/receiveOrder"
+		},
+		"httpResponseTemplate": {
+			"templateType": "MUSTACHE",
+			"template": "{ 'statusCode': 200, 'headers': { 'content-type': 'text/plain' }, 'body': 'REF-0123456789' }"
+		}
+	}
+]

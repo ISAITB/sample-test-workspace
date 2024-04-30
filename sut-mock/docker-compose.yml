@@ -1,0 +1,14 @@
+version: '2.1'
+
+services:
+  mock-server: 
+    # A mock service implementation to realise the SUT. The mock service's configuration reads endpoint definitions
+    # from ./config/config.json and reloads the mocks when changed.
+    image: mockserver/mockserver:5.15.0
+    restart: unless-stopped
+    volumes:
+      - ./config:/config
+    ports:
+      - "1080:1080"
+    environment:
+      - ENV MOCKSERVER_PROPERTY_FILE=/config/mockserver.properties

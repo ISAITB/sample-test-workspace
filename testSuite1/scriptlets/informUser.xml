@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<scriptlet id="informUser" xmlns="http://www.gitb.com/tdl/v1/">
+    <params>
+        <var name="message" type="string"/>
+    </params>
+    <steps>
+        <!-- Add the message to the log. -->
+        <log>$message</log>
+        <!-- Show feedback prompt. -->
+        <if static="true">
+            <cond>$ORGANISATION{helpOn} = 'Y'</cond>
+            <then>
+                <interact hidden="true" inputTitle="Test information" desc="Inform user">
+                    <instruct desc="Next step" forceDisplay="true">$message</instruct>
+                </interact>
+            </then>
+        </if>
+    </steps>
+</scriptlet>

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite id="testSuite1" xmlns="http://www.gitb.com/tdl/v1/" xmlns:gitb="http://www.gitb.com/core/v1/">
+    <metadata>
+        <gitb:name>[TS1] Purchase order validation tests</gitb:name>
+        <gitb:description>Test suite to validate the EU purchase order specification.</gitb:description>
+        <gitb:version>1.0</gitb:version>
+    </metadata>    
+    <actors>
+        <gitb:actor id="Retailer">
+            <gitb:name>Retailer</gitb:name>
+            <gitb:desc>The EU retailer system that needs to be capable of producing and processing purchase orders.</gitb:desc>
+        </gitb:actor>
+        <gitb:actor id="TestBed">
+            <gitb:name>Other retailer</gitb:name>
+            <gitb:desc>A simulated retailer implemented by the Test Bed.</gitb:desc>
+        </gitb:actor>        
+    </actors>
+    <testcase id="testCase1_upload"/>
+    <testcase id="testCase2_send"/>
+    <testcase id="testCase3_sendInvalid"/>
+    <testcase id="testCase4_receive"/>
+</testsuite>

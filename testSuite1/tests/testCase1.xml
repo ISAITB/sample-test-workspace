@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testcase id="testCase1_upload" xmlns="http://www.gitb.com/tdl/v1/" xmlns:gitb="http://www.gitb.com/core/v1/">
+    <metadata>
+        <gitb:name>[TC1] Upload purchase order</gitb:name>
+        <gitb:version>1.0</gitb:version>
+        <gitb:description>Test case that allows the developer of an EU retailer system to upload a purchase order for validation.</gitb:description>
+    </metadata>
+    <imports>
+        <artifact type="schema" encoding="UTF-8" name="purchaseOrderXSD">resources/PurchaseOrder.xsd</artifact>
+    </imports>
+    <actors>
+        <gitb:actor id="Retailer" name="Retailer" role="SUT"/>
+    </actors>
+    <steps>
+        <interact id="userData" desc="Upload purchase order">
+            <request desc="Purchase order to validate:" name="order" inputType="UPLOAD"/>
+        </interact>
+        <verify handler="XmlValidator" desc="Validate purchase order">
+            <input name="xml">$userData{order}</input>
+            <input name="xsd">$purchaseOrderXSD</input>
+        </verify>
+    </steps>
+</testcase>
