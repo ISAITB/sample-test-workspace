@@ -55,4 +55,4 @@ services:
     ports:
       - "1080:1080"
     environment:
-      - ENV MOCKSERVER_PROPERTY_FILE=/config/mockserver.properties      
+      - MOCKSERVER_PROPERTY_FILE=/config/mockserver.properties      
