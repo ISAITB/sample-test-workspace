@@ -1,12 +1,12 @@
   # Stage 1: Build application
-  FROM maven:3.9.2-amazoncorretto-17 AS builder
+  FROM maven:3.9-eclipse-temurin-21 AS builder
 
   WORKDIR /app
   COPY . /app
   RUN mvn clean install -DskipTests=true
 
   # Stage 2: Run application
-  FROM eclipse-temurin:17-jre-jammy
+  FROM eclipse-temurin:21-jre-jammy
 
   RUN mkdir /app
   COPY --from=builder /app/target/po-test-services-1.0-SNAPSHOT.jar /app/app.jar
