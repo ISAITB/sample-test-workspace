@@ -1,12 +1,10 @@
-version: '2.1'
-
 volumes:
   gitb-repo:
   gitb-dbdata:
 
 services:
   gitb-redis:
-    image: redis:7.0.15
+    image: isaitb/gitb-redis
     restart: unless-stopped
   gitb-mysql:
     image: isaitb/gitb-mysql
