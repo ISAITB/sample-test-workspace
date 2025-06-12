@@ -6,7 +6,7 @@
     </params>
     <steps>
         <!-- Send the purchase order to the SUT. -->
-        <send id="sendData" desc="$description" from="TestBed" to="Retailer" handler="$DOMAIN{messagingServiceAddress}">
+        <send id="sendData" desc="$description" handler="$DOMAIN{messagingServiceAddress}">
             <input name="purchaseOrder">$purchaseOrder</input>
             <input name="endpoint">$SYSTEM{endpointAddress}</input>
         </send>

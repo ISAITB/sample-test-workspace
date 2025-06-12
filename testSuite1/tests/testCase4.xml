@@ -6,8 +6,8 @@
         <gitb:description>Test case that expects the SUT to send a valid purchase order.</gitb:description>
     </metadata>
     <imports>
-        <artifact type="schema" name="poSchema">resources/PurchaseOrder.xsd</artifact>
-        <artifact type="binary" name="poSchematronTemplate">resources/schematronTemplate.sch</artifact>
+        <artifact name="poSchema">resources/PurchaseOrder.xsd</artifact>
+        <artifact name="poSchematronTemplate">resources/schematronTemplate.sch</artifact>
     </imports>
     <actors>
         <gitb:actor id="Retailer" name="Retailer" role="SUT"/>
@@ -23,7 +23,7 @@
             <input name="message">"Please use your assigned endpoint for " || $formattedVatNumber || " to send a purchase order for validation. The order date must match the current date (" || $expectedOrderDate || ")."</input>
         </call>
         <!-- Receive a purchase order from the SUT. -->
-        <receive id="receivePO" desc="Send your purchase order" from="Retailer" to="TestBed" handler="$DOMAIN{messagingServiceAddress}">
+        <receive id="receivePO" desc="Send your purchase order" handler="$DOMAIN{messagingServiceAddress}">
             <input name="vatNumber">$formattedVatNumber</input>
         </receive>
         <!-- Use the template to create the Schematron. -->

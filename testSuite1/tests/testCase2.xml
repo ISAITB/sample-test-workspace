@@ -7,7 +7,7 @@
         <gitb:documentation import="docs/testCase2.html"/>
     </metadata>
     <imports>
-        <artifact type="binary" name="poTemplate">resources/poTemplate.xml</artifact>
+        <artifact name="poTemplate">resources/poTemplate.xml</artifact>
     </imports>
     <actors>
         <gitb:actor id="Retailer" name="Retailer" role="SUT"/>
@@ -29,13 +29,15 @@
         </call>
         <!-- Validate response status code. -->
         <verify id="checkStatusCode" desc="Verify status code" handler="StringValidator">
-            <input name="actualstring">$sendPO{response}{status}</input>
-            <input name="expectedstring">"200"</input>            
+            <input name="actual">$sendPO{response}{status}</input>
+            <input name="expected">"200"</input>
+            <input name="failureMessage">"The received HTTP status was not 200."</input>
         </verify>
         <!-- Validate response status code. -->
         <verify id="checkReferenceIdentifier" desc="Verify reference identifier" handler="RegExpValidator">
             <input name="input">$sendPO{response}{payload}</input>
             <input name="expression">"^REF\-\d+$"</input>
+            <input name="failureMessage">"The returned identifier has an invalid format."</input>
         </verify>
     </steps>
     <output>

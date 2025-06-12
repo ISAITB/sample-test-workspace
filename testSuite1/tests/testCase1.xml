@@ -6,14 +6,14 @@
         <gitb:description>Test case that allows the developer of an EU retailer system to upload a purchase order for validation.</gitb:description>
     </metadata>
     <imports>
-        <artifact type="schema" encoding="UTF-8" name="purchaseOrderXSD">resources/PurchaseOrder.xsd</artifact>
+        <artifact name="purchaseOrderXSD">resources/PurchaseOrder.xsd</artifact>
     </imports>
     <actors>
         <gitb:actor id="Retailer" name="Retailer" role="SUT"/>
     </actors>
     <steps>
         <interact id="userData" desc="Upload purchase order">
-            <request desc="Purchase order to validate:" name="order" inputType="UPLOAD"/>
+            <request desc="Purchase order to validate:" name="order" inputType="UPLOAD" required="true"/>
         </interact>
         <verify handler="XmlValidator" desc="Validate purchase order">
             <input name="xml">$userData{order}</input>

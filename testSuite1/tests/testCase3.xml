@@ -9,7 +9,7 @@
         </gitb:tags>
     </metadata>
     <imports>
-        <artifact type="binary" name="purchaseOrder">resources/invalidPurchaseOrder.xml</artifact>
+        <artifact name="purchaseOrder">resources/invalidPurchaseOrder.xml</artifact>
     </imports>
     <actors>
         <gitb:actor id="Retailer" name="Retailer" role="SUT"/>
@@ -23,8 +23,9 @@
         </call>        
         <!-- Validate response status code. -->
         <verify id="checkStatusCode" desc="Verify status code" handler="StringValidator">
-            <input name="actualstring">$sendPO{response}{status}</input>
-            <input name="expectedstring">"400"</input>            
+            <input name="actual">$sendPO{response}{status}</input>
+            <input name="expected">"400"</input>
+            <input name="failureMessage">"The received HTTP status was not 400."</input>
         </verify>
     </steps>
     <output>
