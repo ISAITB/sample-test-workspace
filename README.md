@@ -3,7 +3,7 @@
 This repository contains a complete, working test development workspace to develop [GITB TDL test cases](https://www.itb.ec.europa.eu/docs/tdl/latest/) using 
 supporting [custom test services](https://www.itb.ec.europa.eu/docs/services/latest/) for deployment on the [Interoperability Test Bed](https://github.com/ISAITB/gitb).
 
-For more information on the Interoperability Test Bed you can visit our [Joinup space](https://joinup.ec.europa.eu/collection/interoperability-test-bed-repository/solution/interoperability-test-bed).
+For more information on the Interoperability Test Bed you can visit our [Portal page](https://interoperable-europe.ec.europa.eu/collection/interoperability-test-bed-repository/solution/interoperability-test-bed).
 
 # How to use this repository
 
